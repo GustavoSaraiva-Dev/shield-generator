@@ -1,0 +1,22 @@
+.grid_item_icon {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding: 1rem;
+	text-align: center;
+	cursor: pointer;
+}
+
+.icon_box {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	text-align: center;
+	align-items: center;
+	width: 100%;
+}
+
+.icon_img {
+	width: 1.5rem;
+	height: 1.5rem;
+}
