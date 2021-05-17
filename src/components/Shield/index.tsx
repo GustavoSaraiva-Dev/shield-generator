@@ -9,6 +9,7 @@ interface ShieldProps {
 	svg: string;
 	hexColor: string;
 	onClick: () => void;
+	active: boolean;
 }
 
 interface SimpleIcon {
@@ -32,16 +33,22 @@ function Shield({
 	svg,
 	hexColor,
 	onClick,
+	active,
 }: ShieldProps) {
-	const CustomIcon = svg;
 	return (
-		<li className={styles.grid_item_icon} id={slug} onClick={onClick}>
+		<li
+			className={`${styles.grid_item_icon} ${active ? styles.active : ""}`}
+			id={slug}
+			onClick={onClick}>
 			<div className={styles.icon_box}>
-				<img
+				<i
+					className={`${styles.icon_img} ${styles.dark}`}
+					dangerouslySetInnerHTML={{ __html: svg }}></i>
+				{/* <img
 					className={styles.icon_img}
 					src={`https://unpkg.com/simple-icons@v4/icons/${slug}.svg`}
 					alt=''
-				/>
+				/> */}
 				<h2 className={styles.iconTitle}>{title}</h2>
 			</div>
 		</li>

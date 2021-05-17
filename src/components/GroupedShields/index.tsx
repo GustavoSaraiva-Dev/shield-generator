@@ -1,4 +1,4 @@
-import React, { ReactNode, useContext } from "react";
+import React, { ReactNode, useContext, useState } from "react";
 import simpleicons from "simple-icons";
 import { ShieldContext } from "../../contexts/ShieldContext";
 import Shield from "../Shield";
@@ -26,15 +26,21 @@ interface Icon {
 function GroupedShields({ children }: GroupedShieldsProps) {
 	let icons: Icon[] = [];
 
+	const [currentIndexActive, setCurrentIndexActive] = useState(0);
+
 	for (const item in simpleicons) {
 		icons.push(simpleicons.get(item));
+	}
+
+	function setCurrentActive(currentIndex: number) {
+		setCurrentIndexActive(currentIndex);
 	}
 
 	const { printShield } = useContext(ShieldContext);
 	return (
 		<div className={styles.container}>
 			<ul className={styles.gridItems}>
-				{icons.map((icone) => (
+				{icons.map((icone, index) => (
 					<Shield
 						children={null}
 						title={icone.title}
@@ -42,16 +48,8 @@ function GroupedShields({ children }: GroupedShieldsProps) {
 						key={icone.slug}
 						svg={icone.svg}
 						hexColor={icone.hex}
-						onClick={() =>
-							printShield({
-								shieldStyle: "none",
-								icon: icone.slug,
-								leftText: "Oi",
-								rightText: "olá",
-								leftColor: "#FF00FF",
-								rightColor: "#FFFF00",
-							})
-						}
+						onClick={() => setCurrentActive(index)}
+						active={index === currentIndexActive}
 					/>
 				))}
 			</ul>

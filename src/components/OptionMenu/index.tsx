@@ -1,5 +1,7 @@
-import React, { ReactNode } from "react";
+import { ReactNode, useState } from "react";
+import { ButtonMenu } from "../ButtonMenu";
 
+import { MdBrush, MdTextFormat, MdPalette, MdTune } from "react-icons/md";
 import styles from "./styles.module.scss";
 
 interface OptionMenuProps {
@@ -7,10 +9,23 @@ interface OptionMenuProps {
 }
 
 function OptionMenu({ children }: OptionMenuProps) {
+	const [selectedButton, setSelectedButton] = useState(0);
+	const arrayIcons = [MdBrush, MdTextFormat, MdPalette, MdTune];
+
+	function handleClick(index: number) {
+		setSelectedButton(index);
+	}
+
 	return (
 		<div className={styles.container}>
 			<div className={styles.buttons}>
-				<button type='button'></button>
+				{arrayIcons.map((MappedIcon, index) => (
+					<ButtonMenu
+						icon={<MappedIcon size={30} color={"#FFF"} />}
+						onClick={() => handleClick(index)}
+						selected={index === selectedButton}
+					/>
+				))}
 			</div>
 		</div>
 	);
