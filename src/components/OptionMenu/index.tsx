@@ -1,7 +1,7 @@
-import { ReactNode, useState } from "react";
-import { ButtonMenu } from "../ButtonMenu";
-
+import { ReactNode, useContext, useState } from "react";
 import { MdBrush, MdTextFormat, MdPalette, MdTune } from "react-icons/md";
+import { ButtonMenu } from "../ButtonMenu";
+import { ShieldContext } from "../../contexts/ShieldContext";
 import styles from "./styles.module.scss";
 
 interface OptionMenuProps {
@@ -10,10 +10,12 @@ interface OptionMenuProps {
 
 function OptionMenu({ children }: OptionMenuProps) {
 	const [selectedButton, setSelectedButton] = useState(0);
+	const { toggleActiveMenu } = useContext(ShieldContext);
 	const arrayIcons = [MdBrush, MdTextFormat, MdPalette, MdTune];
 
 	function handleClick(index: number) {
 		setSelectedButton(index);
+		toggleActiveMenu(index);
 	}
 
 	return (

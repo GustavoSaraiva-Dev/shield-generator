@@ -1,4 +1,11 @@
+.global {
+	@apply bg-coolGray-900 w-screen h-screen;
+}
 .nome {
 	@apply text-3xl;
 	font-family: "Lexend", sans-serif;
+}
+
+.home_container {
+	@apply container mx-auto flex flex-col items-center justify-center;
 }

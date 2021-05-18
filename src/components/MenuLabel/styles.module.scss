@@ -1,0 +1,9 @@
+.label_container {
+	@apply w-3/4 h-96 bg-blue-400 mx-8 p-4 rounded-lg;
+}
+.label {
+	@apply mx-2 font-bold;
+}
+.input {
+	@apply w-64 h-10 px-2 mx-2;
+}

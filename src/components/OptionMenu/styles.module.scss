@@ -1,20 +1,14 @@
 .container {
-	width: 400px;
-	height: 60px;
-	margin: 0 20px;
-	border: 1px solid #ddd;
-	margin: 2rem;
+	@apply w-96 h-16 my-5 m-8;
 }
 
 .buttons {
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	align-items: center;
+	@apply flex flex-row justify-center items-center;
+
 	button:first-child {
-		border-radius: 10px 0 0 10px;
+		@apply rounded-tl-lg rounded-bl-lg;
 	}
 	button:last-child {
-		border-radius: 0 10px 10px 0;
+		@apply rounded-tr-lg rounded-br-lg;
 	}
 }
