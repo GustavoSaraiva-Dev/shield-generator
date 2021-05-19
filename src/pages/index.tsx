@@ -1,5 +1,4 @@
-import { GetStaticProps } from "next";
-import { useContext } from "react";
+import { ReactNode, useContext } from "react";
 import simpleicons from "simple-icons";
 import styles from "../../styles/home.module.scss";
 import { Head } from "../components/Head";
@@ -13,7 +12,7 @@ import ShieldBox from "../components/ShieldBox";
 import { ShieldContext } from "../contexts/ShieldContext";
 
 type HomeProps = {
-	data: Array<Icon>;
+	children?: ReactNode;
 };
 type Icon = {
 	title: string;
@@ -24,7 +23,12 @@ type Icon = {
 	hex: string;
 };
 
-export default function Home({ data }: HomeProps) {
+export default function Home({ children }: HomeProps) {
+	let simpleIconCollection: Icon[] = [];
+
+	for (const item in simpleicons) {
+		simpleIconCollection.push(simpleicons.get(item));
+	}
 	const { currentMenu } = useContext(ShieldContext);
 	return (
 		<div className={styles.global}>
@@ -32,36 +36,13 @@ export default function Home({ data }: HomeProps) {
 			<section className={styles.home_container}>
 				<ShieldBox />
 				<OptionMenu />
-				{currentMenu === 0 && <MenuStyle simpleIconCollection={data} />}
+				{currentMenu === 0 && (
+					<MenuStyle simpleIconCollection={simpleIconCollection} />
+				)}
 				{currentMenu === 1 && <MenuLabel />}
 				{currentMenu === 2 && <MenuColor />}
 				{currentMenu === 3 && <MenuAdjust />}
-
-				{/* <GroupedShields /> */}
 			</section>
 		</div>
 	);
 }
-
-export const getStaticProps: GetStaticProps = async () => {
-	let simpleIconCollection: Icon[] = [];
-
-	for (const item in simpleicons) {
-		simpleIconCollection.push(simpleicons.get(item));
-	}
-	const data: Icon[] = simpleIconCollection.map((icon) => ({
-		title: icon.title,
-		slug: icon.slug,
-		svg: icon.svg,
-		path: icon.path,
-		source: icon.source,
-		hex: icon.hex,
-	}));
-
-	console.log(data);
-
-	return {
-		props: data,
-		revalidate: 60 * 60 * 8,
-	};
-};

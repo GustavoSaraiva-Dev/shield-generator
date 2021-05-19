@@ -1,4 +1,3 @@
-import { GetStaticProps } from "next";
 import { ReactNode, useState } from "react";
 import Shield from "../Shield";
 
@@ -26,29 +25,23 @@ function MenuStyle({ children, simpleIconCollection }: MenuStyleProps) {
 	}
 	return (
 		<div className={styles.style_container}>
-			{simpleIconCollection.length <= 0 ? (
-				<span>Carregando</span>
-			) : (
-				<>
-					<h1 className={styles.title}>Choose an icon</h1>
-					<div className={styles.grid_container}>
-						<ul className={styles.gridItems}>
-							{simpleIconCollection?.map((icone, index) => (
-								<Shield
-									children={null}
-									title={icone.title}
-									slug={icone.slug}
-									key={icone.slug}
-									svg={icone.svg}
-									hexColor={icone.hex}
-									onClick={() => setCurrentActive(index)}
-									active={index === currentIndexActive}
-								/>
-							))}
-						</ul>
-					</div>
-				</>
-			)}
+			<h1 className={styles.title}>Choose an icon</h1>
+			<div className={styles.grid_container}>
+				<ul className={styles.gridItems}>
+					{simpleIconCollection?.map((icone, index) => (
+						<Shield
+							children={null}
+							title={icone.title}
+							slug={icone.slug}
+							key={icone.slug}
+							svg={icone.svg}
+							hexColor={icone.hex}
+							onClick={() => setCurrentActive(index)}
+							active={index === currentIndexActive}
+						/>
+					))}
+				</ul>
+			</div>
 		</div>
 	);
 }
