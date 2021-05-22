@@ -1,0 +1,23 @@
+.grid_item_icon {
+	@apply flex flex-col justify-center p-4 text-center cursor-pointer rounded-lg transition-colors;
+
+	&.active {
+		@apply bg-blueGray-700 text-gray-100;
+
+		svg {
+			@apply fill-current text-teal-400;
+		}
+	}
+
+	.icon_box {
+		@apply flex flex-col justify-between text-center items-center w-full;
+
+		.icon_img {
+			@apply w-6 h-6;
+		}
+
+		.iconTitle {
+			@apply text-xs pt-2;
+		}
+	}
+}

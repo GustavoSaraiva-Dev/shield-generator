@@ -2,7 +2,7 @@ import React, { ReactNode } from "react";
 
 import styles from "./styles.module.scss";
 
-interface ShieldProps {
+interface ShieldIconProps {
 	children: ReactNode;
 	title: string;
 	slug: string;
@@ -26,7 +26,7 @@ interface SimpleIcon {
 	};
 }
 
-function Shield({
+function ShieldIcon({
 	children,
 	title,
 	slug,
@@ -34,7 +34,7 @@ function Shield({
 	hexColor,
 	onClick,
 	active,
-}: ShieldProps) {
+}: ShieldIconProps) {
 	return (
 		<li
 			className={`${styles.grid_item_icon} ${active ? styles.active : ""}`}
@@ -44,15 +44,10 @@ function Shield({
 				<i
 					className={`${styles.icon_img} ${styles.dark}`}
 					dangerouslySetInnerHTML={{ __html: svg }}></i>
-				{/* <img
-					className={styles.icon_img}
-					src={`https://unpkg.com/simple-icons@v4/icons/${slug}.svg`}
-					alt=''
-				/> */}
 				<h2 className={styles.iconTitle}>{title}</h2>
 			</div>
 		</li>
 	);
 }
 
-export default Shield;
+export default ShieldIcon;

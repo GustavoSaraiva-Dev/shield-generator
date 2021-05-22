@@ -1,5 +1,5 @@
 import { ReactNode, useState } from "react";
-import Shield from "../Shield";
+import ShieldIcon from "../ShieldIcon";
 
 import styles from "./styles.module.scss";
 
@@ -23,13 +23,17 @@ function MenuStyle({ children, simpleIconCollection }: MenuStyleProps) {
 	function setCurrentActive(currentIndex: number) {
 		setCurrentIndexActive(currentIndex);
 	}
+
 	return (
 		<div className={styles.style_container}>
-			<h1 className={styles.title}>Choose an icon</h1>
+			<div className={styles.box_header}>
+				<h1 className={styles.title}>Choose an icon</h1>
+				<input type='checkbox' className={styles.check_box} />
+			</div>
 			<div className={styles.grid_container}>
 				<ul className={styles.gridItems}>
 					{simpleIconCollection?.map((icone, index) => (
-						<Shield
+						<ShieldIcon
 							children={null}
 							title={icone.title}
 							slug={icone.slug}

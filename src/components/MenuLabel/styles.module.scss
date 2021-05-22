@@ -1,9 +1,18 @@
 .label_container {
-	@apply w-3/4 h-96 bg-blue-400 mx-8 p-4 rounded-lg;
+	@apply w-3/4 h-96 bg-blue-400 mx-8 p-4 rounded-lg my-2;
+}
+.container_group_itens {
+	@apply flex justify-around items-center;
 }
 .label {
 	@apply mx-2 font-bold;
 }
+.text_group {
+	@apply flex flex-col;
+}
+.color_group {
+	@apply flex flex-col;
+}
 .input {
-	@apply w-64 h-10 px-2 mx-2;
+	@apply w-64 h-10 px-2;
 }
