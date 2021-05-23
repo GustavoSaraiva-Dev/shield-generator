@@ -5,9 +5,10 @@ import styles from "./styles.module.scss";
 
 interface ColorPickerProps {
 	children?: ReactNode;
+	colorChange: (color: string) => void;
 }
 
-export function ColorPicker({ children }: ColorPickerProps) {
+export function ColorPicker({ children, colorChange }: ColorPickerProps) {
 	const [showColorPicker, setShowColorPicker] = useState(false);
 	const [color, setColor] = useState<ColorResult>({
 		rgb: { r: 0, g: 0, b: 0, a: 1 },
@@ -25,7 +26,7 @@ export function ColorPicker({ children }: ColorPickerProps) {
 
 	function handleChange(color: ColorResult) {
 		setColor(color);
-		console.log(color);
+		colorChange(color.hex.replace("#", ""));
 	}
 
 	return (

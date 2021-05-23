@@ -8,24 +8,27 @@ interface ShieldBoxProps {
 }
 
 function ShieldBox({ children }: ShieldBoxProps) {
-	const shieldCtx = useContext(ShieldContext);
+	const { shield } = useContext(ShieldContext);
+
+	function handleCopy(str: string) {
+		navigator.clipboard.writeText(str);
+	}
+
+	console.log(shield);
+
+	const strUrl = `https://img.shields.io/badge/${shield?.leftText || ""}-${
+		shield?.rightText || ""
+	}-E4405F?style=for-the-badge&colorA=${shield?.leftColor || "FFFFFF"}&colorB=${
+		shield?.rightColor || "DDDDDD"
+	}&logo=${shield?.badge || "simple-icons"}&logoColor=${
+		shield?.iconColor || "000000"
+	}&logoWidth=20&link=https://www.instagram.com/guh.saraiva/`;
 
 	return (
-		<div className={styles.shield_box_container}>
-			<img
-				style={{ width: "250px" }}
-				src={`https://img.shields.io/badge/${
-					shieldCtx.shield?.leftText || "You Text"
-				}-${
-					shieldCtx.shield?.rightText || "You Text"
-				}-E4405F?style=for-the-badge&colorA=${
-					shieldCtx.shield?.leftColor || "#FFFFFF"
-				}&colorB=${shieldCtx.shield?.rightColor}&logo=${
-					shieldCtx.shield?.badge || "simple-icons"
-				}&logoColor=${
-					shieldCtx.shield?.iconColor || "#FFFFFF"
-				}&logoWidth=20&link=https://www.instagram.com/guh.saraiva/`}
-			/>
+		<div
+			className={styles.shield_box_container}
+			onClick={() => handleCopy(strUrl)}>
+			<img style={{ width: "250px" }} src={strUrl} />
 		</div>
 	);
 }
