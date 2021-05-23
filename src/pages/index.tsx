@@ -6,7 +6,7 @@ import MenuStyle from "../components/MenuStyle";
 import ShieldBox from "../components/ShieldBox";
 
 import { ShieldContext } from "../contexts/ShieldContext";
-import { shields } from "../../public/assets/default_shields.json";
+import { shields as DefaultShields } from "../../public/assets/default_shields.json";
 type HomeProps = {
 	children?: ReactNode;
 };
@@ -34,7 +34,7 @@ export default function Home({ children }: HomeProps) {
 			<div className={styles.shield_style}>
 				<span>Choose a style</span>
 				<div className={styles.shield_style_container}>
-					{shields.map((i) => (
+					{DefaultShields.map((i) => (
 						<div className={styles.img_container}>
 							<img src={i.value} alt={i.title} />
 						</div>
