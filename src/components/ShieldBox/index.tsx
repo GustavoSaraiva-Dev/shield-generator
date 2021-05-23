@@ -14,13 +14,18 @@ function ShieldBox({ children }: ShieldBoxProps) {
 		navigator.clipboard.writeText(str);
 	}
 
-	console.log(shield);
+	const updatedBase64SVG = btoa(
+		shield.icon.replace("<svg", `<svg fill="#${shield.iconColor}"`)
+	);
 
+	console.log(shield);
 	const strUrl = `https://img.shields.io/badge/${shield?.leftText || ""}-${
 		shield?.rightText || ""
-	}-E4405F?style=for-the-badge&colorA=${shield?.leftColor || "FFFFFF"}&colorB=${
-		shield?.rightColor || "DDDDDD"
-	}&logo=${shield?.badge || "simple-icons"}&logoColor=${
+	}-E4405F?style=for-the-badge&colorA=${
+		shield?.leftBackgroundColor || "FFFFFF"
+	}&colorB=${
+		shield?.rightBackgroundColor || "DDDDDD"
+	}&logo=data:image/svg+xml;	base64,${updatedBase64SVG}&logoColor=${
 		shield?.iconColor || "000000"
 	}&logoWidth=20&link=https://www.instagram.com/guh.saraiva/`;
 

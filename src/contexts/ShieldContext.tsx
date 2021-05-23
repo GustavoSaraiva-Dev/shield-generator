@@ -2,12 +2,13 @@ import { createContext, useState, ReactNode, useContext } from "react";
 
 type Shield = {
 	icon?: string;
-	badge?: string;
-	leftText?: string;
-	rightText?: string;
-	leftColor?: string;
-	rightColor?: string;
 	iconColor?: string;
+	leftText?: string;
+	leftTextColor?: string;
+	leftBackgroundColor?: string;
+	rightText?: string;
+	rightTextColor?: string;
+	rightBackgroundColor?: string;
 	shieldStyle?: string;
 };
 

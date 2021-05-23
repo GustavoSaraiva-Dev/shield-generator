@@ -1,6 +1,7 @@
 import { ReactNode, useContext, useRef, useState } from "react";
 import { ShieldContext } from "../../contexts/ShieldContext";
 import { ColorPicker } from "../ColorPicker";
+import ShieldColorEditor from "../ShieldColorEditor";
 
 import styles from "./styles.module.scss";
 
@@ -21,22 +22,41 @@ function MenuLabel({ children }: MenuLabelProps) {
 			...shield,
 			...{
 				leftText: leftTextInput.current.value,
-				rightText: rightTextInput.current.value,
 			},
 		});
 	}
 
 	function handleUpdateIconColor(hexColor: string) {
-		setIconColor(hexColor);
 		setShield({ ...shield, ...{ iconColor: hexColor } });
 	}
-	function handleUpdatLeftTextColor(hexColor: string) {
-		setIconColor(hexColor);
-		setShield({ ...shield, ...{ leftColor: hexColor } });
+	function handleUpdatLeftInfo(
+		leftinputText: string,
+		labelColor: string,
+		backgroundColor: string
+	) {
+		setShield({
+			...shield,
+			...{
+				leftText: leftinputText,
+				leftTextColor: labelColor,
+				leftColor: backgroundColor,
+			},
+		});
 	}
-	function handleUpdateRightTextColor(hexColor: string) {
-		setIconColor(hexColor);
-		setShield({ ...shield, ...{ rightColor: hexColor } });
+
+	function handleUpdatRightInfo(
+		rightinputText: string,
+		labelColor: string,
+		backgroundColor: string
+	) {
+		setShield({
+			...shield,
+			...{
+				rightText: rightinputText,
+				rightTextColor: labelColor,
+				rightColor: backgroundColor,
+			},
+		});
 	}
 
 	return (
@@ -46,34 +66,15 @@ function MenuLabel({ children }: MenuLabelProps) {
 					<span>Icon color</span>
 					<ColorPicker colorChange={handleUpdateIconColor} />
 				</div>
-				<div className={styles.text_group}>
-					<span>Left text</span>
-					<input
-						onChange={handleInputChange}
-						ref={leftTextInput}
-						className={styles.input}
-						type='text'
-						placeholder='Left text shield'
-					/>
-				</div>
-				<div className={styles.color_group}>
-					<span>Left Background Color</span>
-					<ColorPicker colorChange={handleUpdatLeftTextColor} />
-				</div>
-				<div className={styles.text_group}>
-					<span>Right text</span>
-					<input
-						ref={rightTextInput}
-						className={styles.input}
-						type='text'
-						placeholder='Right text shield'
-						onChange={handleInputChange}
-					/>
-				</div>
-				<div className={styles.color_group}>
-					<span>Right Background Color</span>
-					<ColorPicker colorChange={handleUpdateRightTextColor} />
-				</div>
+
+				<ShieldColorEditor
+					labelName={"Left text"}
+					onChange={handleUpdatLeftInfo}
+				/>
+				<ShieldColorEditor
+					labelName={"Right text"}
+					onChange={handleUpdatRightInfo}
+				/>
 			</div>
 		</div>
 	);

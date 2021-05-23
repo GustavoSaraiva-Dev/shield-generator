@@ -1,4 +1,5 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode, useContext } from "react";
+import { ShieldContext } from "../../contexts/ShieldContext";
 
 import styles from "./styles.module.scss";
 
@@ -35,6 +36,12 @@ function ShieldIcon({
 	onClick,
 	active,
 }: ShieldIconProps) {
+	const { shield, setShield } = useContext(ShieldContext);
+
+	function handleIconUpdate(badge: string) {
+		setShield({ ...shield, ...{ badge: badge } });
+	}
+
 	return (
 		<li
 			className={`${styles.grid_item_icon} ${active ? styles.active : ""}`}

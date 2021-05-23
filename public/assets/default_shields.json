@@ -1,0 +1,24 @@
+{
+	"shields": [
+		{
+			"title": "plastic",
+			"value": "https://shields.io/badge/style-plastic-green?logo=appveyor&style=plastic"
+		},
+		{
+			"title": "flat",
+			"value": "https://shields.io/badge/style-flat-green?logo=appveyor&style=flat"
+		},
+		{
+			"title": "flatSquare",
+			"value": "https://shields.io/badge/style-flat--square-green?logo=appveyor&style=flat-square"
+		},
+		{
+			"title": "forTheBadge",
+			"value": "https://shields.io/badge/style-for--the--badge-green?logo=appveyor&style=for-the-badge"
+		},
+		{
+			"title": "social",
+			"value": "https://shields.io/badge/style-social-green?logo=appveyor&style=social"
+		}
+	]
+}

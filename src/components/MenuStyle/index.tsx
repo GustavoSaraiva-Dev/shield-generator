@@ -1,6 +1,6 @@
-import { ReactNode, useState } from "react";
+import { ReactNode, useContext, useState } from "react";
+import { ShieldContext } from "../../contexts/ShieldContext";
 import ShieldIcon from "../ShieldIcon";
-
 import styles from "./styles.module.scss";
 
 interface MenuStyleProps {
@@ -18,10 +18,12 @@ interface Icon {
 }
 
 function MenuStyle({ children, simpleIconCollection }: MenuStyleProps) {
-	const [currentIndexActive, setCurrentIndexActive] = useState(0);
+	const { shield, setShield } = useContext(ShieldContext);
+	const [currentIcon, setCurrentIcon] = useState({ index: 0, slug: "" });
 
-	function setCurrentActive(currentIndex: number) {
-		setCurrentIndexActive(currentIndex);
+	function setCurrentActive(currentIndex: number, currentSlug: string) {
+		setCurrentIcon({ index: currentIndex, slug: currentSlug });
+		setShield({ ...shield, ...{ icon: currentSlug } });
 	}
 
 	return (
@@ -40,8 +42,8 @@ function MenuStyle({ children, simpleIconCollection }: MenuStyleProps) {
 							key={icone.slug}
 							svg={icone.svg}
 							hexColor={icone.hex}
-							onClick={() => setCurrentActive(index)}
-							active={index === currentIndexActive}
+							onClick={() => setCurrentActive(index, icone.svg)}
+							active={index === currentIcon.index}
 						/>
 					))}
 				</ul>

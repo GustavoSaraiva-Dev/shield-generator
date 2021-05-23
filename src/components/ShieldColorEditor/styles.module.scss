@@ -1,0 +1,13 @@
+.color_container {
+	@apply flex justify-between;
+	.input_group {
+		@apply flex flex-col w-full mx-1;
+
+		.input {
+			@apply w-full p-2 focus:ring-4 border-0;
+		}
+	}
+	.color_picker {
+		@apply flex flex-col mx-1;
+	}
+}
