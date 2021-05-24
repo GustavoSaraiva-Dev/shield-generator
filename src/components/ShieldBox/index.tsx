@@ -26,7 +26,7 @@ function ShieldBox({ children }: ShieldBoxProps) {
 		shield?.rightBackgroundColor || "DDDDDD"
 	}&logo=data:image/svg+xml;	base64,${updatedBase64SVG}&logoColor=${
 		shield?.iconColor || "000000"
-	}&logoWidth=20&link=https://www.instagram.com/guh.saraiva/`;
+	}&logoWidth=20`;
 
 	return (
 		<div
