@@ -1,6 +1,7 @@
-import { ReactNode, useContext, useState } from "react";
+import { ReactNode, useCallback, useContext, useState } from "react";
 import { ShieldContext } from "../../contexts/ShieldContext";
 import { ColorPicker } from "../ColorPicker";
+import { debounce } from "lodash";
 import ShieldColorEditor from "../ShieldColorEditor";
 import ShieldIcon from "../ShieldIcon";
 import styles from "./styles.module.scss";
@@ -22,6 +23,7 @@ interface Icon {
 function MenuStyle({ children, simpleIconCollection }: MenuStyleProps) {
 	const { shield, setShield } = useContext(ShieldContext);
 	const [currentIcon, setCurrentIcon] = useState({ index: 0, slug: "" });
+	const [filteredCol, setFilteredCol] = useState(simpleIconCollection);
 
 	function setCurrentActive(currentIndex: number, currentSlug: string) {
 		setCurrentIcon({ index: currentIndex, slug: currentSlug });
@@ -62,10 +64,32 @@ function MenuStyle({ children, simpleIconCollection }: MenuStyleProps) {
 		});
 	}
 
+	const debouncedSearch = useCallback(
+		debounce(
+			(searchText: string) =>
+				setFilteredCol(
+					simpleIconCollection.filter((item) =>
+						item.title.toLowerCase().includes(searchText.toLowerCase())
+					)
+				),
+			500
+		),
+		[]
+	);
+
+	function handleKeyUp(searchText: string) {
+		debouncedSearch(searchText);
+	}
+
 	return (
 		<div className={styles.style_container}>
 			<div className={styles.box_header}>
 				<h1 className={styles.title}>Choose an icon</h1>
+				<input
+					type='text'
+					placeholder={"search"}
+					onKeyUp={(e) => handleKeyUp(e.currentTarget.value)}
+				/>
 				<div
 					style={{
 						display: "flex",
@@ -78,7 +102,7 @@ function MenuStyle({ children, simpleIconCollection }: MenuStyleProps) {
 			</div>
 			<div className={styles.grid_container}>
 				<ul className={styles.gridItems}>
-					{simpleIconCollection?.map((icone, index) => (
+					{filteredCol?.map((icone, index) => (
 						<ShieldIcon
 							children={null}
 							title={icone.title}

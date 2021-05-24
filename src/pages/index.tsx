@@ -1,7 +1,6 @@
 import { ReactNode, useContext } from "react";
 import simpleicons from "simple-icons";
 import styles from "../../styles/home.module.scss";
-import MenuLabel from "../components/MenuLabel";
 import MenuStyle from "../components/MenuStyle";
 import ShieldBox from "../components/ShieldBox";
 
