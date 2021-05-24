@@ -10,25 +10,8 @@ interface MenuLabelProps {
 }
 
 function MenuLabel({ children }: MenuLabelProps) {
-	const [color, setIconColor] = useState("");
-	const [leftColor, setLeftColor] = useState("");
-	const [rightColor, setRightColor] = useState("");
-	const leftTextInput = useRef<HTMLInputElement>();
-	const rightTextInput = useRef<HTMLInputElement>();
 	const { shield, setShield } = useContext(ShieldContext);
 
-	function handleInputChange() {
-		setShield({
-			...shield,
-			...{
-				leftText: leftTextInput.current.value,
-			},
-		});
-	}
-
-	function handleUpdateIconColor(hexColor: string) {
-		setShield({ ...shield, ...{ iconColor: hexColor } });
-	}
 	function handleUpdatLeftInfo(
 		leftinputText: string,
 		labelColor: string,
@@ -39,7 +22,7 @@ function MenuLabel({ children }: MenuLabelProps) {
 			...{
 				leftText: leftinputText,
 				leftTextColor: labelColor,
-				leftColor: backgroundColor,
+				leftBackgroundColor: backgroundColor,
 			},
 		});
 	}
@@ -54,7 +37,7 @@ function MenuLabel({ children }: MenuLabelProps) {
 			...{
 				rightText: rightinputText,
 				rightTextColor: labelColor,
-				rightColor: backgroundColor,
+				rightBackgroundColor: backgroundColor,
 			},
 		});
 	}
@@ -62,11 +45,6 @@ function MenuLabel({ children }: MenuLabelProps) {
 	return (
 		<div className={styles.label_container}>
 			<div className={styles.container_group_itens}>
-				<div className={styles.color_group}>
-					<span>Icon color</span>
-					<ColorPicker colorChange={handleUpdateIconColor} />
-				</div>
-
 				<ShieldColorEditor
 					labelName={"Left text"}
 					onChange={handleUpdatLeftInfo}
