@@ -14,8 +14,6 @@ function ShieldBox({ children }: ShieldBoxProps) {
 		navigator.clipboard.writeText(str);
 	}
 
-	console.log(shield);
-
 	const updatedBase64SVG = Buffer.from(
 		shield?.icon.replace("<svg", `<svg fill="#${shield.iconColor}"`)
 	).toString("base64");
