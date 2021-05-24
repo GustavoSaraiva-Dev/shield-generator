@@ -55,7 +55,7 @@ function ShieldColorEditor({
 	return (
 		<div className={styles.color_container}>
 			<div className={styles.input_group}>
-				<span>{labelName}</span>
+				<span className={styles.label}>{labelName}</span>
 				<input
 					onChange={() =>
 						handleChange(
@@ -67,23 +67,12 @@ function ShieldColorEditor({
 					ref={inputRef}
 					className={styles.input}
 					type='text'
-					placeholder='Left text shield'
+					placeholder='Set your text here!'
 				/>
 			</div>
+
 			<div className={styles.color_picker}>
-				<span>Label</span>
-				<ColorPicker
-					colorChange={(labelColor) =>
-						handleChange(
-							shieldColorEditor.inputText,
-							labelColor,
-							shieldColorEditor.backgroundColor
-						)
-					}
-				/>
-			</div>
-			<div className={styles.color_picker}>
-				<span>Label</span>
+				<span className={styles.label}>Color</span>
 				<ColorPicker
 					colorChange={(backgroundColor) =>
 						handleChange(

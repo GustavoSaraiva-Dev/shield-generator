@@ -1,7 +1,0 @@
-.button {
-	@apply w-12 h-12 text-xs flex items-center justify-center bg-emerald-500 cursor-pointer outline-none border-0 transition-colors;
-
-	&.selected {
-		@apply bg-emerald-600;
-	}
-}

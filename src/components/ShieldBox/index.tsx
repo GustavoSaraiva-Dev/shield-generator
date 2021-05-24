@@ -14,14 +14,15 @@ function ShieldBox({ children }: ShieldBoxProps) {
 		navigator.clipboard.writeText(str);
 	}
 
-	const updatedBase64SVG = btoa(
-		shield.icon.replace("<svg", `<svg fill="#${shield.iconColor}"`)
-	);
-
 	console.log(shield);
+
+	const updatedBase64SVG = Buffer.from(
+		shield?.icon.replace("<svg", `<svg fill="#${shield.iconColor}"`)
+	).toString("base64");
+
 	const strUrl = `https://img.shields.io/badge/${shield?.leftText || ""}-${
 		shield?.rightText || ""
-	}-E4405F?style=for-the-badge&colorA=${
+	}-E4405F?style=${shield.shieldStyle}&colorA=${
 		shield?.leftBackgroundColor || "FFFFFF"
 	}&colorB=${
 		shield?.rightBackgroundColor || "DDDDDD"

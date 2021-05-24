@@ -1,5 +1,7 @@
 import { ReactNode, useContext, useState } from "react";
 import { ShieldContext } from "../../contexts/ShieldContext";
+import { ColorPicker } from "../ColorPicker";
+import ShieldColorEditor from "../ShieldColorEditor";
 import ShieldIcon from "../ShieldIcon";
 import styles from "./styles.module.scss";
 
@@ -26,11 +28,53 @@ function MenuStyle({ children, simpleIconCollection }: MenuStyleProps) {
 		setShield({ ...shield, ...{ icon: currentSlug } });
 	}
 
+	function handleUpdateIconColor(hexColor: string) {
+		setShield({ ...shield, ...{ iconColor: hexColor } });
+	}
+
+	function handleUpdatLeftInfo(
+		leftinputText: string,
+		labelColor: string,
+		backgroundColor: string
+	) {
+		setShield({
+			...shield,
+			...{
+				leftText: leftinputText,
+				leftTextColor: labelColor,
+				leftBackgroundColor: backgroundColor,
+			},
+		});
+	}
+
+	function handleUpdatRightInfo(
+		rightinputText: string,
+		labelColor: string,
+		backgroundColor: string
+	) {
+		setShield({
+			...shield,
+			...{
+				rightText: rightinputText,
+				rightTextColor: labelColor,
+				rightBackgroundColor: backgroundColor,
+			},
+		});
+	}
+
 	return (
 		<div className={styles.style_container}>
 			<div className={styles.box_header}>
 				<h1 className={styles.title}>Choose an icon</h1>
-				<input type='checkbox' className={styles.check_box} />
+				<div
+					style={{
+						display: "flex",
+						justifyContent: "center",
+						alignItems: "center",
+					}}>
+					<span className={styles.title}>Color</span>
+					<ColorPicker colorChange={handleUpdateIconColor} />
+				</div>
 			</div>
 			<div className={styles.grid_container}>
 				<ul className={styles.gridItems}>
@@ -47,6 +91,19 @@ function MenuStyle({ children, simpleIconCollection }: MenuStyleProps) {
 						/>
 					))}
 				</ul>
+			</div>
+
+			<div className={styles.label_container}>
+				<div className={styles.container_group_itens}>
+					<ShieldColorEditor
+						labelName={"Left text"}
+						onChange={handleUpdatLeftInfo}
+					/>
+					<ShieldColorEditor
+						labelName={"Right text"}
+						onChange={handleUpdatRightInfo}
+					/>
+				</div>
 			</div>
 		</div>
 	);

@@ -30,7 +30,7 @@ export function ColorPicker({ children, colorChange }: ColorPickerProps) {
 	}
 
 	return (
-		<div>
+		<>
 			<div className={styles.swatch} onClick={handleClick}>
 				<div
 					className={styles.color}
@@ -46,9 +46,10 @@ export function ColorPicker({ children, colorChange }: ColorPickerProps) {
 						color={color.hex}
 						disableAlpha={true}
 						onChange={handleChange}
+						presetColors={[]}
 					/>
 				</div>
 			)}
-		</div>
+		</>
 	);
 }

@@ -1,21 +1,30 @@
 .style_container {
-	@apply w-3/4 h-auto max-h-96 bg-gray-200 mx-8 p-4 rounded-lg flex flex-col justify-center items-center my-2;
-}
+	@apply w-9/12 h-auto min-h-full bg-gray-200 p-4 rounded-lg flex flex-col justify-center items-center mx-0 sm:mx-2;
 
-.box_header {
-	@apply w-full h-auto flex justify-between items-center;
-}
-.title {
-	@apply text-2xl font-bold self-start;
-}
+	.box_header {
+		@apply w-full h-auto flex justify-between items-center;
+	}
 
-.check_box {
-	@apply w-5 h-5 bg-rose-900 mr-2;
+	.title {
+		@apply text-xl font-bold mr-2;
+	}
 }
 
 .grid_container {
-	@apply overflow-y-scroll bg-gray-100 rounded-lg;
+	@apply w-full h-96 overflow-y-scroll bg-gray-100 rounded-lg mt-2 shadow-md;
+
+	.gridItems {
+		@apply grid grid-cols-2 sm:grid-cols-4 md:grid-cols-8 gap-2 grid-flow-row-dense;
+	}
 }
-.gridItems {
-	@apply grid grid-cols-2 sm:grid-cols-4 gap-2 grid-flow-row-dense;
+
+.label_container {
+	@apply w-full flex p-4 bg-white my-4 rounded-md shadow-md;
+
+	.container_group_itens {
+		@apply w-full flex justify-between mt-4;
+		@media (max-width: 640px) {
+			@apply flex-col;
+		}
+	}
 }

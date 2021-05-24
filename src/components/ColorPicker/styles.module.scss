@@ -1,15 +1,19 @@
 .swatch {
 	@apply p-2 bg-white rounded-sm shadow-sm inline-block cursor-pointer;
-}
 
-.color {
-	@apply w-9 h-6 rounded-sm;
+	.color {
+		@apply w-9 h-6 rounded-sm shadow-md;
+	}
 }
 
 .popover {
-	@apply absolute z-10;
-}
+	@apply absolute z-10 bottom-28;
 
-.cover {
-	@apply fixed top-0 right-0 bottom-0 left-0;
+	@media (max-width: 640px) {
+		@apply absolute z-10 top-2/4 left-1/4 -translate-x-2/4 -translate-y-2/4 scale-y-150 scale-x-150;
+	}
+
+	.cover {
+		@apply fixed top-0 right-0 bottom-0 left-0;
+	}
 }

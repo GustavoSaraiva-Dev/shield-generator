@@ -14,12 +14,12 @@
 	@apply flex flex-row justify-center items-center;
 
 	.img_container {
-		@apply mx-2;
+		@apply mx-2 cursor-pointer;
 	}
 }
 
 .editor_container {
-	@apply flex;
+	@apply flex flex-col px-4 md:flex-row md:px-64 justify-center;
 }
 
 // .custom_menu {

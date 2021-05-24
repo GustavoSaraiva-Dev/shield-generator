@@ -1,11 +1,14 @@
 .color_container {
-	@apply flex justify-between;
+	@apply flex justify-between pb-2;
 	.input_group {
 		@apply flex flex-col w-full mx-1;
 
 		.input {
-			@apply w-full p-2 focus:ring-4 border-0;
+			@apply w-full p-2 focus:ring-4 border-0 shadow-md rounded-sm;
 		}
+	}
+	.label {
+		@apply pb-1;
 	}
 	.color_picker {
 		@apply flex flex-col mx-1;
