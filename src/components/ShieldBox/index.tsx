@@ -1,4 +1,6 @@
 import { ReactNode, useContext } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { ShieldContext } from "../../contexts/ShieldContext";
 
 import styles from "./styles.module.scss";
@@ -12,6 +14,16 @@ function ShieldBox({ children }: ShieldBoxProps) {
 
 	function handleCopy(str: string) {
 		navigator.clipboard.writeText(str);
+		toast("💾 Copied!", {
+			position: "top-right",
+			autoClose: 1750,
+			hideProgressBar: false,
+			closeOnClick: false,
+			pauseOnHover: false,
+			draggable: false,
+			progress: undefined,
+			type: "default",
+		});
 	}
 
 	const updatedBase64SVG = Buffer.from(
@@ -30,9 +42,10 @@ function ShieldBox({ children }: ShieldBoxProps) {
 
 	return (
 		<div
-			className={styles.shield_box_container}
+			className={`${styles.shield_box_container} ${styles.block} ${styles.moving_glow}`}
 			onClick={() => handleCopy(strUrl)}>
 			<img style={{ width: "250px" }} src={strUrl} />
+			<ToastContainer />
 		</div>
 	);
 }

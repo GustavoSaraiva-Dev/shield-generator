@@ -1,6 +1,7 @@
 import { ReactNode, useCallback, useContext, useState } from "react";
 import { ShieldContext } from "../../contexts/ShieldContext";
 import { ColorPicker } from "../ColorPicker";
+import { HiSearch } from "react-icons/hi";
 import { debounce } from "lodash";
 import ShieldColorEditor from "../ShieldColorEditor";
 import ShieldIcon from "../ShieldIcon";
@@ -85,19 +86,20 @@ function MenuStyle({ children, simpleIconCollection }: MenuStyleProps) {
 		<div className={styles.style_container}>
 			<div className={styles.box_header}>
 				<h1 className={styles.title}>Choose an icon</h1>
-				<input
-					type='text'
-					placeholder={"search"}
-					onKeyUp={(e) => handleKeyUp(e.currentTarget.value)}
-				/>
-				<div
-					style={{
-						display: "flex",
-						justifyContent: "center",
-						alignItems: "center",
-					}}>
-					<span className={styles.title}>Color</span>
-					<ColorPicker colorChange={handleUpdateIconColor} />
+				<div className={styles.input_color_group}>
+					<div className={styles.icon_input_group}>
+						<input
+							className={styles.input}
+							type='text'
+							placeholder={"search"}
+							onKeyUp={(e) => handleKeyUp(e.currentTarget.value)}
+						/>
+						<HiSearch className={styles.icon} size={28} />
+					</div>
+					<div className={styles.color_box}>
+						<span className={styles.title}>Color</span>
+						<ColorPicker colorChange={handleUpdateIconColor} />
+					</div>
 				</div>
 			</div>
 			<div className={styles.grid_container}>

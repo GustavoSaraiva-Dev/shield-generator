@@ -1,12 +1,32 @@
 .style_container {
-	@apply w-9/12 h-auto min-h-full bg-gray-200 p-4 rounded-lg flex flex-col justify-center items-center mx-0 sm:mx-2;
+	@apply w-full h-auto min-h-full bg-gray-200 p-4 rounded-lg flex flex-col justify-center items-center mx-0;
+	@apply sm:w-9/12 sm:mx-2;
 
 	.box_header {
-		@apply w-full h-auto flex justify-between items-center;
-	}
+		@apply w-full h-auto flex flex-col  justify-around items-start;
+		@apply md:flex-row md:items-center md:justify-between;
 
-	.title {
-		@apply text-xl font-bold mr-2;
+		.title {
+			@apply text-xl font-bold mr-2;
+		}
+
+		.input_color_group {
+			@apply flex justify-between;
+			.icon_input_group {
+				@apply relative mr-2;
+				@apply sm:mr-6;
+				.input {
+					@apply w-full relative  border-0 shadow-md rounded-md pl-10;
+				}
+				.icon {
+					@apply absolute  top-2 left-2 -translate-x-2/4 -translate-y-2/4;
+				}
+			}
+
+			.color_box {
+				@apply flex justify-center items-center;
+			}
+		}
 	}
 }
 
@@ -19,7 +39,7 @@
 }
 
 .label_container {
-	@apply w-full flex p-4 bg-white my-4 rounded-md shadow-md;
+	@apply w-full flex p-4 bg-gray-100 my-4 rounded-md shadow-md;
 
 	.container_group_itens {
 		@apply w-full flex justify-between mt-4;

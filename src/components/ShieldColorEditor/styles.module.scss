@@ -4,7 +4,7 @@
 		@apply flex flex-col w-full mx-1;
 
 		.input {
-			@apply w-full p-2 focus:ring-4 border-0 shadow-md rounded-sm;
+			@apply w-full p-2 focus:ring-4 border-0 shadow-md rounded-sm bg-white;
 		}
 	}
 	.label {

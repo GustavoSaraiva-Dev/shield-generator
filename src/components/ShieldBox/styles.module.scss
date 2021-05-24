@@ -1,3 +1,53 @@
 .shield_box_container {
 	@apply my-8 cursor-pointer;
+
+	&.block {
+		@apply relative bg-gradient-to-r from-black to-gray-900 z-10;
+		// position: relative;
+		// background: linear-gradient(0deg, #000, #272727);
+		// z-index: 1;
+	}
+
+	&.moving_glow:before,
+	&.moving_glow:after {
+		@apply opacity-40 rounded-lg absolute;
+		content: "";
+		filter: blur(3px);
+		left: calc(100% - 102%);
+		top: calc(100% - 112%);
+		background: linear-gradient(
+			90deg,
+			#fb0094,
+			#0000ff,
+			#00ff00,
+			#ffff00,
+			#ff0000,
+			#fb0094,
+			#0000ff,
+			#00ff00,
+			#ffff00,
+			#ff0000
+		);
+		background-size: 400%;
+		width: calc(100% + 10px);
+		height: calc(100% + 10px);
+		z-index: -1;
+		animation: anim_moving_glow 60s linear infinite;
+	}
+
+	@keyframes anim_moving_glow {
+		0% {
+			background-position: 0 0;
+		}
+		50% {
+			background-position: 400% 0;
+		}
+		100% {
+			background-position: 0 0;
+		}
+	}
+
+	&.moving_glow:after {
+		filter: blur(30px);
+	}
 }

@@ -8,34 +8,24 @@
 
 .shield_style {
 	@apply container mx-auto flex flex-col items-center justify-center py-4;
+
+	span {
+		@apply text-2xl py-4 text-gray-100;
+	}
 }
 
 .shield_style_container {
-	@apply flex flex-row justify-center items-center;
+	@apply flex flex-col justify-center items-center;
+	@apply md:flex-row;
 
 	.img_container {
-		@apply mx-2 cursor-pointer;
+		@apply mx-2 my-2 md:my-0 cursor-pointer;
+		img {
+			@apply h-7;
+		}
 	}
 }
 
 .editor_container {
 	@apply flex flex-col px-4 md:flex-row md:px-64 justify-center;
 }
-
-// .custom_menu {
-// 	@apply sm:w-6/12 sm:p-5 w-11/12 h-4/6 rounded-xl overflow-y-auto my-0 mx-auto grid place-items-center bg-blueGray-800 	 p-0;
-
-// 	&::-webkit-scrollbar {
-// 		width: 20px;
-// 	}
-
-// 	&::-webkit-scrollbar-track {
-// 		-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-// 		border-radius: 10px;
-// 	}
-
-// 	&::-webkit-scrollbar-thumb {
-// 		border-radius: 10px;
-// 		-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
-// 	}
-// }

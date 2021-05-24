@@ -25,17 +25,6 @@ function ShieldColorEditor({
 	});
 	const inputRef = useRef<HTMLInputElement>();
 
-	// function handleInputChange(inputText: string) {
-	// 	setShieldColorEditor({ ...shieldColorEditor, ...{ inputText: inputText } });
-	// }
-
-	// function handleColorChange(labelColor: string, backgroundColor: string) {
-	// 	setShieldColorEditor({
-	// 		...shieldColorEditor,
-	// 		...{ labelColor: labelColor, backgroundColor: backgroundColor },
-	// 	});
-	// }
-
 	function handleChange(
 		inputText: string,
 		labelColor: string,

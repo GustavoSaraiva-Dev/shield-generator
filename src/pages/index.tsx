@@ -6,7 +6,6 @@ import ShieldBox from "../components/ShieldBox";
 
 import { ShieldContext } from "../contexts/ShieldContext";
 import DefaultShields from "../../public/assets/default_shields.json";
-//import { GetStaticProps } from "next";
 type HomeProps = {
 	children?: ReactNode;
 	shields: { title: string; value: string }[];
@@ -54,12 +53,3 @@ export default function Home({ children, shields }: HomeProps) {
 		</div>
 	);
 }
-
-// export const getStaticProps: GetStaticProps = async () => {
-// 	return {
-// 		props: {
-// 			shields: DefaultShields.shields,
-// 		},
-// 		revalidate: 60 * 60 * 60,
-// 	};
-// };
