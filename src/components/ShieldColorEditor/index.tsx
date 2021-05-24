@@ -6,6 +6,8 @@ import styles from "./styles.module.scss";
 interface ShieldColorEditorProps {
 	children?: ReactNode;
 	labelName: string;
+	inputValue: string;
+	initialColor: string;
 	onChange?: (
 		inputValue: string,
 		labelColor: string,
@@ -17,9 +19,11 @@ function ShieldColorEditor({
 	children,
 	onChange,
 	labelName,
+	inputValue,
+	initialColor,
 }: ShieldColorEditorProps) {
 	const [shieldColorEditor, setShieldColorEditor] = useState({
-		inputText: "",
+		inputText: inputValue,
 		labelColor: "",
 		backgroundColor: "",
 	});
@@ -46,9 +50,9 @@ function ShieldColorEditor({
 			<div className={styles.input_group}>
 				<span className={styles.label}>{labelName}</span>
 				<input
-					onChange={() =>
+					onChange={(e) =>
 						handleChange(
-							inputRef.current.value,
+							e.currentTarget.value,
 							shieldColorEditor.labelColor,
 							shieldColorEditor.backgroundColor
 						)
@@ -56,6 +60,7 @@ function ShieldColorEditor({
 					ref={inputRef}
 					className={styles.input}
 					type='text'
+					value={inputValue}
 					placeholder='Set your text here!'
 				/>
 			</div>
@@ -70,6 +75,7 @@ function ShieldColorEditor({
 							backgroundColor
 						)
 					}
+					initialColor={initialColor}
 				/>
 			</div>
 		</div>

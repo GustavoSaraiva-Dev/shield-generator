@@ -44,7 +44,7 @@ function ShieldBox({ children }: ShieldBoxProps) {
 		<div
 			className={`${styles.shield_box_container} ${styles.block} ${styles.moving_glow}`}
 			onClick={() => handleCopy(strUrl)}>
-			<img style={{ width: "250px" }} src={strUrl} />
+			<img style={{ height: "40px", maxHeight: "70px" }} src={strUrl} />
 			<ToastContainer />
 		</div>
 	);

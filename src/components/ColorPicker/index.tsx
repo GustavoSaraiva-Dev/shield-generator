@@ -5,14 +5,19 @@ import styles from "./styles.module.scss";
 
 interface ColorPickerProps {
 	children?: ReactNode;
+	initialColor: string;
 	colorChange: (color: string) => void;
 }
 
-export function ColorPicker({ children, colorChange }: ColorPickerProps) {
+export function ColorPicker({
+	children,
+	initialColor,
+	colorChange,
+}: ColorPickerProps) {
 	const [showColorPicker, setShowColorPicker] = useState(false);
 	const [color, setColor] = useState<ColorResult>({
 		rgb: { r: 0, g: 0, b: 0, a: 1 },
-		hex: "#000000",
+		hex: `#${initialColor}`,
 		hsl: { h: 0, s: 0, l: 0, a: 1 },
 	});
 
@@ -35,7 +40,7 @@ export function ColorPicker({ children, colorChange }: ColorPickerProps) {
 				<div
 					className={styles.color}
 					style={{
-						backgroundColor: `rgba(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}, ${color.rgb.a})`,
+						backgroundColor: color.hex,
 					}}
 				/>
 			</div>

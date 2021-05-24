@@ -44,7 +44,6 @@ function MenuStyle({ children, simpleIconCollection }: MenuStyleProps) {
 			...shield,
 			...{
 				leftText: leftinputText,
-				leftTextColor: labelColor,
 				leftBackgroundColor: backgroundColor,
 			},
 		});
@@ -59,7 +58,6 @@ function MenuStyle({ children, simpleIconCollection }: MenuStyleProps) {
 			...shield,
 			...{
 				rightText: rightinputText,
-				rightTextColor: labelColor,
 				rightBackgroundColor: backgroundColor,
 			},
 		});
@@ -98,7 +96,10 @@ function MenuStyle({ children, simpleIconCollection }: MenuStyleProps) {
 					</div>
 					<div className={styles.color_box}>
 						<span className={styles.title}>Color</span>
-						<ColorPicker colorChange={handleUpdateIconColor} />
+						<ColorPicker
+							colorChange={handleUpdateIconColor}
+							initialColor={shield.iconColor}
+						/>
 					</div>
 				</div>
 			</div>
@@ -123,11 +124,15 @@ function MenuStyle({ children, simpleIconCollection }: MenuStyleProps) {
 				<div className={styles.container_group_itens}>
 					<ShieldColorEditor
 						labelName={"Left text"}
+						inputValue={shield.leftText}
 						onChange={handleUpdatLeftInfo}
+						initialColor={shield.leftBackgroundColor}
 					/>
 					<ShieldColorEditor
 						labelName={"Right text"}
+						inputValue={shield.rightText}
 						onChange={handleUpdatRightInfo}
+						initialColor={shield.rightBackgroundColor}
 					/>
 				</div>
 			</div>
