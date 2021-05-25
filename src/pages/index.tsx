@@ -47,7 +47,7 @@ export default function Home({ children, shields }: HomeProps) {
 				</div>
 			</div>
 			<section className={styles.editor_container}>
-				<MenuStyle simpleIconCollection={simpleIconCollection.slice(0, 100)} />
+				<MenuStyle simpleIconCollection={simpleIconCollection} />
 			</section>
 		</div>
 	);
