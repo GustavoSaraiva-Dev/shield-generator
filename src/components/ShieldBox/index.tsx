@@ -34,11 +34,11 @@ function ShieldBox({ children }: ShieldBoxProps) {
 		shield?.rightText || ""
 	}-E4405F?style=${shield.shieldStyle}&colorA=${
 		shield?.leftBackgroundColor || "FFFFFF"
-	}&colorB=${
-		shield?.rightBackgroundColor || "DDDDDD"
-	}&logo=data:image/svg+xml;	base64,${updatedBase64SVG}&logoColor=${
-		shield?.iconColor || "000000"
-	}&logoWidth=20`;
+	}&colorB=${shield?.rightBackgroundColor || "DDDDDD"}${
+		shield?.icon === "default"
+			? ""
+			: `&logo=data:image/svg+xml;base64,` + updatedBase64SVG
+	}&logoColor=${shield?.iconColor || "000000"}&logoWidth=20`;
 
 	return (
 		<div

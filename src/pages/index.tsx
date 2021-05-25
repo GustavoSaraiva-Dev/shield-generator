@@ -26,7 +26,6 @@ export default function Home({ children, shields }: HomeProps) {
 	for (const item in simpleicons) {
 		simpleIconCollection.push(simpleicons.get(item));
 	}
-
 	function handleSetStileShield(style: string) {
 		setShield({ ...shield, ...{ shieldStyle: style } });
 	}
@@ -48,7 +47,7 @@ export default function Home({ children, shields }: HomeProps) {
 				</div>
 			</div>
 			<section className={styles.editor_container}>
-				<MenuStyle simpleIconCollection={simpleIconCollection} />
+				<MenuStyle simpleIconCollection={simpleIconCollection.slice(0, 100)} />
 			</section>
 		</div>
 	);
